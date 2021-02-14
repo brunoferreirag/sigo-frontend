@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+}
+h3{
+  padding-left: 10px;
+}
+.button-row button{
+ margin-left: 10px;
+}
+
+.mat-form-field{
+  padding-left: 10px;;
+}

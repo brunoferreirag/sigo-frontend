@@ -1,0 +1,104 @@
+<div class="norma-industrial-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title>Cadastro de Normas Industriais</mat-card-title>
+        </mat-card-header>
+<br/>
+        <form [formGroup]="formNormaIndustrial" (ngSubmit)="salvar()" class="example-form">
+            <mat-card-content>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Código" required formControlName="codigo">
+                </mat-form-field>
+                <mat-error
+                    *ngIf="formNormaIndustrial.controls['codigo'].invalid && formNormaIndustrial.controls['codigo'].errors.required && (formNormaIndustrial.controls['codigo'].dirty || formNormaIndustrial.controls['codigo'].touched)">
+                    Código é obrigatório
+                </mat-error>
+                <mat-error
+                    *ngIf="formNormaIndustrial.controls['codigo'].invalid && formNormaIndustrial.controls['codigo'].errors.maxlength && (formNormaIndustrial.controls['codigo'].dirty || formNormaIndustrial.controls['codigo'].touched)">
+                    Máximo de 30 caracteres
+                </mat-error>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Título"  required formControlName="titulo">
+                </mat-form-field>
+
+                <mat-error
+                    *ngIf="formNormaIndustrial.controls['titulo'].invalid && formNormaIndustrial.controls['titulo'].errors.required && (formNormaIndustrial.controls['titulo'].dirty || formNormaIndustrial.controls['titulo'].touched)">
+                    Título é obrigatório
+                </mat-error>
+
+                <mat-error
+                    *ngIf="formNormaIndustrial.controls['titulo'].invalid && formNormaIndustrial.controls['titulo'].errors.maxlength && (formNormaIndustrial.controls['titulo'].dirty || formNormaIndustrial.controls['titulo'].touched)">
+                    Máximo de 300 caracteres
+                </mat-error>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Versão" required formControlName="versao">
+                </mat-form-field>
+                <mat-error
+                    *ngIf="formNormaIndustrial.controls['versao'].invalid && formNormaIndustrial.controls['versao'].errors.required && (formNormaIndustrial.controls['versao'].dirty || formNormaIndustrial.controls['versao'].touched)">
+                    Versão do documento é obrigatória
+                </mat-error>
+                <mat-error
+                    *ngIf="formNormaIndustrial.controls['versao'].invalid && formNormaIndustrial.controls['versao'].errors.maxlength && (formNormaIndustrial.controls['versao'].dirty || formNormaIndustrial.controls['versao'].touched)">
+                    Máximo de 3 caracteres
+                </mat-error>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Autor" required formControlName="autor">
+                </mat-form-field>
+                <mat-error
+                    *ngIf="formNormaIndustrial.controls['autor'].invalid && formNormaIndustrial.controls['autor'].errors.required && (formNormaIndustrial.controls['autor'].dirty || formNormaIndustrial.controls['autor'].touched)">
+                    Autor é obrigatório
+                </mat-error>
+                <mat-error
+                    *ngIf="formNormaIndustrial.controls['autor'].invalid && formNormaIndustrial.controls['autor'].errors.maxlength && (formNormaIndustrial.controls['autor'].dirty || formNormaIndustrial.controls['autor'].touched)">
+                    Máximo de 100 caracteres
+                </mat-error>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Endereço do documento" required formControlName="link">
+                </mat-form-field>
+                <mat-error
+                    *ngIf="formNormaIndustrial.controls['link'].invalid && formNormaIndustrial.controls['link'].errors.required && (formNormaIndustrial.controls['link'].dirty || formNormaIndustrial.controls['link'].touched)">
+                    Link é obrigatório
+                </mat-error>
+                <mat-error
+                *ngIf="formNormaIndustrial.controls['link'].invalid && formNormaIndustrial.controls['link'].errors.maxlength && (formNormaIndustrial.controls['link'].dirty || formNormaIndustrial.controls['link'].touched)">
+                Máximo de 500 caracteres
+            </mat-error>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Data de entrada em vigor" type="date" required formControlName="dataVigor">
+            </mat-form-field>
+            <mat-error
+                *ngIf="formNormaIndustrial.controls['dataVigor'].invalid && formNormaIndustrial.controls['dataVigor'].errors.required && (formNormaIndustrial.controls['dataVigor'].dirty || formNormaIndustrial.controls['dataVigor'].touched)">
+                Data de entrada em vigor é obrigatório
+            </mat-error>
+           
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Username Criação" required formControlName="userNameCriacao">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Username Alteração" required formControlName="userNameAlteracao">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Data criação" required formControlName="dataCriacao">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Data Alteração" required formControlName="dataAlteracao">
+                </mat-form-field>
+
+                  
+             
+            </mat-card-content>
+            <div class="button-row">
+                <button mat-raised-button color="primary" [disabled]="!formNormaIndustrial.valid" type="submit">Salvar</button>
+                <button mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>
+            </div>
+
+        </form>
+    </mat-card>
+
+</div>

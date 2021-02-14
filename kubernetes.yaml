@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sigo-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sigo-frontend
+  template:
+    metadata:
+      labels:
+        app: sigo-frontend
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: sigo-config
+        image: docker.io/brunoferreirag/sigo-frontend:latest
+        ports:
+        - containerPort: 4200
+          name: sigo-frontend
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "10m"
+          limits:
+            memory: "256Mi"
+            cpu: "256m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sigo-frontend
+spec:
+  type: LoadBalancer 
+  ports:
+    - name: sigo-frontend
+      protocol: TCP
+      port: 4200
+  selector:
+    app: sigo-frontend
+---
