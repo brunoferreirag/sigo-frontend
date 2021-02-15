@@ -1,16 +1,32 @@
-FROM node:13.3.0 AS compile-image
+# stage1 as builder
+FROM node:10-alpine as builder
 
-RUN npm install -g yarn
+# copy the package.json to install dependencies
+COPY package.json package-lock.json ./
 
-WORKDIR /opt/ng
-COPY .npmrc package.json yarn.lock ./
-RUN yarn install
+# Install the dependencies and make the folder
+RUN npm install && mkdir /app-ui && mv ./node_modules ./app-ui
 
-ENV PATH="./node_modules/.bin:$PATH" 
+WORKDIR /app-ui
 
-COPY . ./
-RUN ng build --prod
+COPY . .
 
-FROM nginx
-COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=compile-image /opt/ng/dist/app-name /usr/share/nginx/html
+# Build the project and copy the files
+RUN npm run ng build -- --deploy-url=/envapp/ --prod
+
+
+FROM nginx:alpine
+
+#!/bin/sh
+
+COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
+
+## Remove default nginx index page
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy from the stahg 1
+COPY --from=builder /app-ui/dist /usr/share/nginx/html
+
+EXPOSE 80
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
