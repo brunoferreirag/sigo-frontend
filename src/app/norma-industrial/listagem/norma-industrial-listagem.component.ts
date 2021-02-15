@@ -15,7 +15,7 @@ import { NormaIndustrialDataSource } from './norma-industrial-datasource';
   styleUrls: ['./norma-industrial-listagem.component.css']
 })
 export class NormaIndustrialListagemComponent implements OnInit {
-  displayedColumns = ['codigo','versao','data-vigor','titulo','autor', 'data-alteracao', 'data-inclusao','username-criacao','username-alteracao','acao-editar','acao-excluir'];
+  displayedColumns = ['codigo','versao','data-vigor','titulo','autor','acao-editar','acao-excluir'];
   normaIndustrialDataSource: NormaIndustrialDataSource;
   @ViewChild(MatPaginator,{static:false}) paginator: MatPaginator;
   searchForm: FormGroup;

@@ -11,8 +11,4 @@ export class NormaIndustrial {
     'titulo':string;
     'autor':string;
     'link':string;
-
-    getDataAlteracao(){
-        return (this['data-alteracao']) ? this['data-alteracao']:this['data-inclusao'];
-    }
 }
