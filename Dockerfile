@@ -1,18 +1,16 @@
-# base image
-FROM node:12.2.0
+FROM node:13.3.0 AS compile-image
 
-# set working directory
-WORKDIR /app
+RUN npm install -g yarn
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+WORKDIR /opt/ng
+COPY .npmrc package.json yarn.lock ./
+RUN yarn install
 
-# install and cache app dependencies
-COPY package.json /app/package.json
-RUN npm install
+ENV PATH="./node_modules/.bin:$PATH" 
 
-# add app
-COPY . /app
+COPY . ./
+RUN ng build --prod
 
-# start app
-CMD ng serve --host 0.0.0.0
+FROM nginx
+COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=compile-image /opt/ng/dist/app-name /usr/share/nginx/html
