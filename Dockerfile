@@ -1,15 +1,10 @@
-FROM node:12.2.0
-
+FROM node:10-alpine as build-step
+RUN mkdir -p /app
 WORKDIR /app
-
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
-
-COPY package.json /app/package.json
+COPY package.json /app
 RUN npm install
-
-# add app
 COPY . /app
-
-# start app
-CMD ng serve --host 0.0.0.0
+RUN npm run build --prod
+# Stage 2
+FROM nginx:1.17.1-alpine
+COPY --from=build-step /app/docs /usr/share/nginx/html
