@@ -1,7 +1,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true
+  production: true,
   wsLogin:'https://sigo-gateway-brunoferreirag.cloud.okteto.net/api/usuarios/login',
   wsListarUsuarios:'https://sigo-gateway-brunoferreirag.cloud.okteto.net/api/usuarios',
   wsListarFuncoes:'https://sigo-gateway-brunoferreirag.cloud.okteto.net/api/usuarios/funcoes',
