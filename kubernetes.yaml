@@ -33,7 +33,6 @@ kind: Service
 metadata:
   name: sigo-frontend
 spec:
-  type: LoadBalancer 
   ports:
     - name: sigo-frontend
       protocol: TCP
