@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NormaIndustrialFormularioComponent } from './norma-industrial/formulario/norma-industrial-formulario.component';
 import { NormaIndustrialListagemComponent } from './norma-industrial/listagem/norma-industrial-listagem.component';
+import { NotFoundComponent } from './shared/notfound/notfound.component';
 import { AuthGuardService } from './shared/service/auth-guard.service';
 import { UsuarioFormularioComponent } from './usuario/formulario/usuario-formulario.component';
 import { UsuarioListagemComponent } from './usuario/listagem/usuario-listagem.component';
@@ -59,6 +60,10 @@ const routes: Routes = [
     path: 'norma-industrial', component: NormaIndustrialFormularioComponent, canActivate: [AuthGuardService], data: {
       expectedRole: 'ROLE_SIGO_GN'
     }
+  },
+
+  {
+    path: '**', component: NotFoundComponent
   },
 ];
 

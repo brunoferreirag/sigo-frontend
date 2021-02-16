@@ -43,6 +43,7 @@ import { ArmazemListagemComponent } from './armazem/listagem/armazem-listagem.co
 import { ArmazemFormularioComponent } from './armazem/formulario/armazem-formulario.component';
 import { NormaIndustrialListagemComponent } from './norma-industrial/listagem/norma-industrial-listagem.component';
 import { NormaIndustrialFormularioComponent } from './norma-industrial/formulario/norma-industrial-formulario.component';
+import { NotFoundComponent } from './shared/notfound/notfound.component';
 export const DEFAULT_TIMEOUT = new InjectionToken<number>('defaultTimeout');
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ export const DEFAULT_TIMEOUT = new InjectionToken<number>('defaultTimeout');
     ArmazemListagemComponent,
     ArmazemFormularioComponent,
     NormaIndustrialListagemComponent,
-    NormaIndustrialFormularioComponent
+    NormaIndustrialFormularioComponent,
+    NotFoundComponent
   ],
   entryComponents: [ModalComponent],
   imports: [

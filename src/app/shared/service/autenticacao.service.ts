@@ -13,7 +13,7 @@ export class AutenticacaoService {
   private currentUserSubject: BehaviorSubject<AutenticacaoResponse>;
   public currentUser: Observable<AutenticacaoResponse>;
   constructor(public http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<AutenticacaoResponse>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<AutenticacaoResponse>(JSON.parse(localStorage.getItem('usuarioAtual')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
