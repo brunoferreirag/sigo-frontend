@@ -42,3 +42,19 @@ spec:
     app: sigo-frontend
     
 ---
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    dev.okteto.com/generate-host: "true"
+  name: sigo-frontend
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /
+          backend:
+            serviceName: sigo-frontend
+            servicePort: 80
+---
