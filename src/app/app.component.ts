@@ -9,7 +9,7 @@ import { SpinnerService } from './shared/service/spinner.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'SIGO - Sistema Integrado de Gestão e Operação';
+  title = 'SIGO';
   constructor(public autenticacaoService: AutenticacaoService, public router: Router, public spinnerService: SpinnerService){}
 
   public get estaLogado(): boolean {

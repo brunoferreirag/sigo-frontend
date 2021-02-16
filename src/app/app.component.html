@@ -28,6 +28,18 @@
   </button>
 </div>
 
+<div fxLayout="row" fxShow="true" fxHide.gt-sm="true">
+  
+  <button *ngIf="estaLogado" mat-button [mat-menu-trigger-for]="matMenuSize" >
+    <mat-icon>menu</mat-icon>
+    Menu
+  </button>
+  <button mat-button routerLink="/login" *ngIf="!estaLogado">
+    <mat-icon>power_settings_new</mat-icon>
+    Login
+  </button>
+</div>
+
 </mat-toolbar>
 
 <mat-menu x-position="before" #menu="matMenu">
@@ -35,7 +47,26 @@
     <mat-icon>home</mat-icon>
    Armazéns
   </button>
- 
+</mat-menu>
+<mat-menu x-position="before" #matMenuSize="matMenu">
+  <button  *ngIf="estaLogado"  mat-menu-item routerLink="/armazens">
+    <mat-icon>home</mat-icon>
+   Armazéns
+  </button>
+  <button mat-button *ngIf="estaLogado" (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+    Logout
+  </button>
+  <button mat-button routerLink="/usuarios" *ngIf="estaLogado">
+    <mat-icon>people</mat-icon>
+    Usuários
+  </button>
+
+  <button mat-button routerLink="/normas-industriais" *ngIf="estaLogado">
+    <mat-icon>folder</mat-icon>
+    Gestão de Normas
+  </button>
+
 </mat-menu>
 <mat-spinner diameter="60" style="margin:0 auto;" color="accent" *ngIf="spinnerService.visibility | async"></mat-spinner>
 <app-alerta></app-alerta>

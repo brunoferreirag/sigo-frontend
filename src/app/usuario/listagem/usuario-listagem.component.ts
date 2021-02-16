@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { MatDialog } from '@angular/material';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ModalComponent } from 'src/app/shared/component/modal.component';
 import { AlertaService } from 'src/app/shared/service/alerta-service.service';
@@ -13,18 +15,40 @@ import { UsuarioDataSource } from './usuario-datasource';
   templateUrl: './usuario-listagem.component.html',
   styleUrls: ['./usuario-listagem.component.css']
 })
-export class UsuarioListagemComponent implements OnInit {
+export class UsuarioListagemComponent implements OnInit, OnDestroy {
   displayedColumns = ['username', 'primeiro-nome', 'ultimo-nome','acao-editar','acao-excluir'];
   usuarioDataSource: UsuarioDataSource;
   @ViewChild(MatPaginator,{static:false}) paginator: MatPaginator;
+  currentScreenWidth: string = '';
+  flexMediaWatcher: Subscription;
  
-  constructor(private usuarioService: UsuarioService, public dialog: MatDialog, private alertaService: AlertaService,private router: Router) { }
+  constructor(private mediaObserver: MediaObserver,private usuarioService: UsuarioService, public dialog: MatDialog, private alertaService: AlertaService,private router: Router) { 
+    this.flexMediaWatcher = mediaObserver.media$.subscribe((change: MediaChange) => {
+      if (change.mqAlias !== this.currentScreenWidth) {
+          this.currentScreenWidth = change.mqAlias;
+          this.setupTable();
+      }
+  }); 
+  }
+  ngOnDestroy(): void {
+    if(this.flexMediaWatcher){
+      this.flexMediaWatcher.unsubscribe(); 
+    }
+  }
  
   ngOnInit() {
     this.usuarioDataSource = new UsuarioDataSource(this.usuarioService);
     this.usuarioDataSource.loadUsuarios();
   }
- 
+  setupTable() {
+   
+    if (this.currentScreenWidth === 'xl' || this.currentScreenWidth === 'lg' || this.currentScreenWidth === 'md' || this.currentScreenWidth === 'sm') { 
+      this.displayedColumns = ['username', 'primeiro-nome', 'ultimo-nome','acao-editar','acao-excluir'];
+    }
+    else{
+      this.displayedColumns = ['username', 'acao-editar','acao-excluir'];
+    }
+}
   ngAfterViewInit() {
     this.usuarioDataSource.counter$
       .pipe(
