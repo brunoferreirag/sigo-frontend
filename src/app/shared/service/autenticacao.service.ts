@@ -15,6 +15,12 @@ export class AutenticacaoService {
   constructor(public http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<AutenticacaoResponse>(JSON.parse(localStorage.getItem('usuarioAtual')));
     this.currentUser = this.currentUserSubject.asObservable();
+
+    const usuarioAtual = sessionStorage.getItem('usuarioAtual');
+    if(usuarioAtual){
+      const usuario =  JSON.parse(usuarioAtual);
+      this.currentUserSubject.next(usuario);
+    }
   }
 
   login(username: string, password: string) {
