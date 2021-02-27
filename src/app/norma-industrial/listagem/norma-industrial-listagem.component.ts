@@ -55,7 +55,7 @@ export class NormaIndustrialListagemComponent implements OnInit,OnDestroy {
       titulo: [null],
       versao: [null]
     });
-    this.normaIndustrialDataSource.loadNormaIndustrial(null,null,null,0, 10);
+    this.normaIndustrialDataSource.loadNormaIndustrial(null,null,null,0, 10,false);
   }
  
   ngAfterViewInit() {
