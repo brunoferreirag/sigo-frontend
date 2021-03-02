@@ -39,61 +39,11 @@ import { NormaIndustrialService } from "../norma-industrial.service";
           this.formNormaIndustrial.get("versao").setValue(result['versao']);
           this.formNormaIndustrial.get("autor").setValue(result['autor']);
           this.formNormaIndustrial.get("link").setValue(result['link']);
-          this.formNormaIndustrial.get("userNameCriacao").setValue(result['username-criacao']);
-          this.formNormaIndustrial.get("userNameCriacao").disable();
-          this.formNormaIndustrial.get("userNameAlteracao").setValue(result['username-alteracao']);
-          this.formNormaIndustrial.get("userNameAlteracao").disable();
-          this.formNormaIndustrial.get("dataCriacao").setValue(moment(result['data-criacao']).format('DD/MM/YYYY'));
           this.formNormaIndustrial.get("dataVigor").setValue(moment(result['data-vigor']).format('YYYY-MM-DD'));
-          this.formNormaIndustrial.get("dataCriacao").disable();
-          if(result['data-alteracao']){
-            this.formNormaIndustrial.get("dataAlteracao").setValue(moment(result['data-alteracao']).format('DD/MM/YYYY'));
-          }
-         
-          this.formNormaIndustrial.get("dataAlteracao").disable();
         })
       }
-      else{
-        this.formNormaIndustrial.get("dataCriacao").setValue(moment(new Date()).format('DD/MM/YYYY'));
-        this.formNormaIndustrial.get("dataCriacao").disable();
-        this.formNormaIndustrial.get("dataAlteracao").disable();
-        this.formNormaIndustrial.get("userNameAlteracao").disable();
-        this.formNormaIndustrial.get("userNameCriacao").setValue(this.autenticacaoService.usuarioAtualValue['user-name']);
-        this.formNormaIndustrial.get("userNameCriacao").disable();
-      }
     }
-
-    salvar(): void {
-       const normaIndustrial : NormaIndustrial = new NormaIndustrial();
-       normaIndustrial.autor= this.formNormaIndustrial.get('autor').value;
-       normaIndustrial.codigo= this.formNormaIndustrial.get('codigo').value;
-       normaIndustrial.link= this.formNormaIndustrial.get('link').value;
-       normaIndustrial.titulo= this.formNormaIndustrial.get('titulo').value;
-       normaIndustrial.versao= this.formNormaIndustrial.get('versao').value;
-       normaIndustrial['data-vigor']= moment(this.formNormaIndustrial.get('dataVigor').value,'YYYY-MM-DD').toDate();
-       
-       if(this.id){
-         normaIndustrial.id= this.id;
-         normaIndustrial['data-alteracao']= new Date();
-         normaIndustrial['username-alteracao']=  this.autenticacaoService.usuarioAtualValue['user-name'];
-         normaIndustrial['data-criacao']= moment(this.formNormaIndustrial.get('dataCriacao').value,'DD/MM/YYYY').toDate();
-         normaIndustrial['username-criacao']= this.formNormaIndustrial.get('userNameCriacao').value;
-         this.normaIndustrialService.editar(normaIndustrial).subscribe((result) =>{
-           this.alertaService.success("Norma Industrial editada com sucesso!",true);
-           this.router.navigate(['/normas-industriais']);
-         })
-       }
-       else{
-        normaIndustrial['username-criacao']=  this.autenticacaoService.usuarioAtualValue['user-name'];
-        normaIndustrial['data-criacao']= new Date();
-        this.normaIndustrialService.incluir(normaIndustrial).subscribe((result) =>{
-          this.alertaService.success("Norma Industrial Incluída com sucesso!",true);
-          this.router.navigate(['/normas-industriais']);
-        })
-       }
-    }
-
-    cancelar(){
+    voltar(){
       this.router.navigate(['/normas-industriais']);
     }
     

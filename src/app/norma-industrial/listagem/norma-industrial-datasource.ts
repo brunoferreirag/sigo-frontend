@@ -27,7 +27,7 @@ export class NormaIndustrialDataSource implements DataSource<NormaIndustrial>{
         this.countSubject.complete();
     }
  
-    loadNormaIndustrial(codigo,titulo,versao,page = 0, size = 10, isLoad=false) {
+    loadNormaIndustrial(codigo,titulo,versao,page = 0, size = 10) {
         this.loadingSubject.next(true);
         this.normaIndustrialService.getAll( codigo,titulo,versao,page, size )
             .pipe(
@@ -41,10 +41,7 @@ export class NormaIndustrialDataSource implements DataSource<NormaIndustrial>{
                     this.alertaService.error('Nenhum resultado encontrado');
                 }
                 else{
-                    if(isLoad){
-                        this.alertaService.error('');
-                    }
-                   
+                    this.alertaService.error('');
                 }
             }
             );
