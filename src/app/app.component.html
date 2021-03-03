@@ -17,7 +17,7 @@
     Usuários
   </button>
 
-  <button mat-button routerLink="/normas-industriais" *ngIf="estaLogado">
+  <button mat-button *ngIf="estaLogado" mat-button [mat-menu-trigger-for]="menuNormas" >
     <mat-icon>folder</mat-icon>
     Gestão de Normas
   </button>
@@ -46,6 +46,13 @@
   <button mat-menu-item routerLink="/armazens">
     <mat-icon>home</mat-icon>
    Armazéns
+  </button>
+</mat-menu>
+
+<mat-menu x-position="before" #menuNormas="matMenu">
+  <button mat-menu-item routerLink="/normas-industriais">
+    <mat-icon>manage_search</mat-icon>
+   Pesquisa Normas Industriais
   </button>
 </mat-menu>
 <mat-menu x-position="before" #matMenuSize="matMenu">
