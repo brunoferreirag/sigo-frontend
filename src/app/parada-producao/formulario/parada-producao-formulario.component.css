@@ -76,39 +76,43 @@ body {
   width: 100%;
 }
 
-.armazem-wrapper .example-full-width,
-.armazem-wrapper .btn-block {
+.parada-producao-wrapper .example-full-width,
+.parada-producao-wrapper .btn-block {
   width: 100%;
 }
 
-.armazem-wrapper mat-card-header {
+.parada-producao-wrapper mat-card-header {
   text-align: center;
   width: 100%;
   display: block;
   font-weight: 700;
 }
 
-.armazem-wrapper mat-card-header mat-card-title {
+.parada-producao-wrapper mat-card-header mat-card-title {
   font-size: 30px;
   margin: 0;
 }
 
-.armazem-wrapper .mat-card {
+.parada-producao-wrapper .mat-card {
   padding: 40px 70px 50px;
 }
 
-.armazem-wrapper .mat-stroked-button {
+.parada-producao-wrapper .mat-stroked-button {
   border: 1px solid currentColor;
   line-height: 54px;
   background: #FFF7FA;
 }
 
-.armazem-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
+.parada-producao-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
   padding: 0.8375em 0;
 }
 
 .button-row button{
     margin: 5px;
+}
+
+.ng-select {
+ margin-bottom: 10px;
 }
 
 ul,li {

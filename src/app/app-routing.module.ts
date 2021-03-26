@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ArmazemFormularioComponent } from './armazem/formulario/armazem-formulario.component';
-import { ArmazemListagemComponent } from './armazem/listagem/armazem-listagem.component';
+import { ParadaProducaoFormularioComponent } from './parada-producao/formulario/parada-producao-formulario.component';
+import { ParadaProducaoListagemComponent } from './parada-producao/listagem/parada-producao-listagem.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NormaIndustrialFormularioComponent } from './norma-industrial/formulario/norma-industrial-formulario.component';
@@ -29,19 +29,19 @@ const routes: Routes = [
     }
   },
   {
-    path: 'armazens', component: ArmazemListagemComponent, canActivate: [AuthGuardService], data: {
-      expectedRole: 'ROLE_SIGO_GPI'
+    path: 'paradas-producao', component: ParadaProducaoListagemComponent, canActivate: [AuthGuardService], data: {
+      expectedRole: 'ROLE_SIGO_GPI_PP'
     }
   },
 
   {
-    path: 'armazem/:id', component: ArmazemFormularioComponent, canActivate: [AuthGuardService], data: {
-      expectedRole: 'ROLE_SIGO_GPI'
+    path: 'parada-producao/:id', component: ParadaProducaoFormularioComponent, canActivate: [AuthGuardService], data: {
+      expectedRole: 'ROLE_SIGO_GPI_PP'
     }
   },
   {
-    path: 'armazem', component: ArmazemFormularioComponent, canActivate: [AuthGuardService], data: {
-      expectedRole: 'ROLE_SIGO_GPI'
+    path: 'parada-producao', component: ParadaProducaoFormularioComponent, canActivate: [AuthGuardService], data: {
+      expectedRole: 'ROLE_SIGO_GPI_PP'
     }
   },
   {

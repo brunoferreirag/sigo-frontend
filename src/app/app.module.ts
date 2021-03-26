@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { NgSelectModule } from '@ng-select/ng-select';
 import { AuthGuardService } from './shared/service/auth-guard.service';
 
 import {
@@ -24,7 +24,6 @@ import {
   MatOptionModule,
   MatPaginatorModule,
   MatDialogModule,
-
   MAT_DIALOG_DEFAULT_OPTIONS,
   MatListModule,
   MatCheckboxModule,
@@ -39,8 +38,8 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
 import { LoadHttpInterceptor } from './helpers/load.interceptor';
 import { ModalComponent } from './shared/component/modal.component';
 import { UsuarioFormularioComponent } from './usuario/formulario/usuario-formulario.component';
-import { ArmazemListagemComponent } from './armazem/listagem/armazem-listagem.component';
-import { ArmazemFormularioComponent } from './armazem/formulario/armazem-formulario.component';
+import { ParadaProducaoListagemComponent } from './parada-producao/listagem/parada-producao-listagem.component';
+import { ParadaProducaoFormularioComponent } from './parada-producao/formulario/parada-producao-formulario.component';
 import { NormaIndustrialListagemComponent } from './norma-industrial/listagem/norma-industrial-listagem.component';
 import { NormaIndustrialFormularioComponent } from './norma-industrial/formulario/norma-industrial-formulario.component';
 import { NotFoundComponent } from './shared/notfound/notfound.component';
@@ -54,8 +53,8 @@ export const DEFAULT_TIMEOUT = new InjectionToken<number>('defaultTimeout');
     AlertaComponent,
     UsuarioListagemComponent,
     UsuarioFormularioComponent,
-    ArmazemListagemComponent,
-    ArmazemFormularioComponent,
+    ParadaProducaoListagemComponent,
+    ParadaProducaoFormularioComponent,
     NormaIndustrialListagemComponent,
     NormaIndustrialFormularioComponent,
     NotFoundComponent
@@ -80,6 +79,7 @@ export const DEFAULT_TIMEOUT = new InjectionToken<number>('defaultTimeout');
     MatDividerModule,
     MatSlideToggleModule,
     MatSelectModule,
+    NgSelectModule,
     MatOptionModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,

@@ -43,9 +43,9 @@
 </mat-toolbar>
 
 <mat-menu x-position="before" #menu="matMenu">
-  <button mat-menu-item routerLink="/armazens">
+  <button mat-menu-item routerLink="/paradas-producao">
     <mat-icon>home</mat-icon>
-   Armazéns
+   Paradas na Produção
   </button>
 </mat-menu>
 
@@ -56,9 +56,9 @@
   </button>
 </mat-menu>
 <mat-menu x-position="before" #matMenuSize="matMenu">
-  <button  *ngIf="estaLogado"  mat-menu-item routerLink="/armazens">
+  <button  *ngIf="estaLogado"  mat-menu-item routerLink="/paradas-producao">
     <mat-icon>home</mat-icon>
-   Armazéns
+  Paradas na Produção
   </button>
   <button mat-button *ngIf="estaLogado" (click)="logout()">
     <mat-icon>exit_to_app</mat-icon>

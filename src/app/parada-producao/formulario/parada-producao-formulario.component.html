@@ -1,0 +1,66 @@
+<div class="parada-producao-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Parada na Producao</mat-card-title>
+    </mat-card-header>
+    <br />
+    <form [formGroup]="formParadaProducao" (ngSubmit)="salvar()" class="example-form">
+      <mat-card-content>
+        <div class="row">
+          <ng-select name="linhaProducao" id="linhaProducao" [items]="listaLinhasProducao"
+            placeholder="Linha de Produção" bindLabel="nome" [clearable]="false"
+            notFoundText="Nenhuma linha de produção encontrada" formControlName="linhaProducao"
+            class="ng-select example-full-width">
+            <ng-template ng-label-tmp let-item="item">
+              {{item['nome']}}
+            </ng-template>
+            <ng-template ng-option-tmp let-item="item">
+              <span class="pipe"></span>
+              {{item['nome']}}
+            </ng-template>
+          </ng-select>
+        </div>
+        <mat-error
+          *ngIf="formParadaProducao.controls['linhaProducao'].invalid && formParadaProducao.controls['linhaProducao'].errors.required && (formParadaProducao.controls['linhaProducao'].dirty || formParadaProducao.controls['linhaProducao'].touched)">
+          Linha de Produção é obrigatória
+        </mat-error>
+        <div class="row">
+          <ng-select name="turno" id="turno" [items]="listaTurnos" placeholder="Turno" bindLabel="nome"
+            [clearable]="false" notFoundText="Nenhum turno encontrada" formControlName="turno"
+            class="ng-select example-full-width">
+            <ng-template ng-label-tmp let-item="item">
+              {{item['nome']}}
+            </ng-template>
+            <ng-template ng-option-tmp let-item="item">
+              <span class="pipe"></span>
+              {{item['nome']}}
+            </ng-template>
+          </ng-select>
+        </div>
+        <mat-error
+          *ngIf="formParadaProducao.controls['turno'].invalid && formParadaProducao.controls['turno'].errors.required && (formParadaProducao.controls['turno'].dirty || formParadaProducao.controls['turno'].touched)">
+          Turno é obrigatório
+        </mat-error>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Data de Início" type="datetime-local" required formControlName="dataInicio">
+        </mat-form-field>
+        <mat-error
+          *ngIf="formParadaProducao.controls['dataInicio'].invalid && formParadaProducao.controls['dataInicio'].errors.required && (formParadaProducao.controls['dataInicio'].dirty || formParadaProducao.controls['dataInicio'].touched)">
+          Data de início é obrigatória
+        </mat-error>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Data de Encerramento" type="datetime-local" formControlName="dataFim">
+        </mat-form-field>
+
+      </mat-card-content>
+      <div class="button-row">
+        <button mat-raised-button color="primary" [disabled]="!formParadaProducao.valid" type="submit">Salvar</button>
+        <button mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>
+      </div>
+
+    </form>
+  </mat-card>
+
+</div>
