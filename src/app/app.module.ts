@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { InjectionToken, NgModule } from '@angular/core';
+import { InjectionToken, LOCALE_ID, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -43,7 +43,13 @@ import { ParadaProducaoFormularioComponent } from './parada-producao/formulario/
 import { NormaIndustrialListagemComponent } from './norma-industrial/listagem/norma-industrial-listagem.component';
 import { NormaIndustrialFormularioComponent } from './norma-industrial/formulario/norma-industrial-formulario.component';
 import { NotFoundComponent } from './shared/notfound/notfound.component';
+import { StatusFaseIndustrialListagemComponent } from './status-fase-industrial/listagem/status-fase-industrial-listagem.component';
+import { registerLocaleData } from '@angular/common';
 export const DEFAULT_TIMEOUT = new InjectionToken<number>('defaultTimeout');
+import localePt from '@angular/common/locales/pt';
+
+registerLocaleData(localePt);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +63,7 @@ export const DEFAULT_TIMEOUT = new InjectionToken<number>('defaultTimeout');
     ParadaProducaoFormularioComponent,
     NormaIndustrialListagemComponent,
     NormaIndustrialFormularioComponent,
+    StatusFaseIndustrialListagemComponent,
     NotFoundComponent
   ],
   entryComponents: [ModalComponent],
@@ -92,6 +99,7 @@ export const DEFAULT_TIMEOUT = new InjectionToken<number>('defaultTimeout');
     { provide: HTTP_INTERCEPTORS, useClass: LoadHttpInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }, 
+    { provide: LOCALE_ID, useValue: 'pt-BR' },    
     AuthGuardService
   ],
   bootstrap: [AppComponent]

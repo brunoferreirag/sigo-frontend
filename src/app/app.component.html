@@ -44,8 +44,12 @@
 
 <mat-menu x-position="before" #menu="matMenu">
   <button mat-menu-item routerLink="/paradas-producao">
-    <mat-icon>home</mat-icon>
+    <mat-icon>trending_down</mat-icon>
    Paradas na Produção
+  </button>
+  <button mat-menu-item routerLink="/status-producao">
+    <mat-icon>visibility</mat-icon>
+   Status da Produção
   </button>
 </mat-menu>
 
@@ -57,8 +61,12 @@
 </mat-menu>
 <mat-menu x-position="before" #matMenuSize="matMenu">
   <button  *ngIf="estaLogado"  mat-menu-item routerLink="/paradas-producao">
-    <mat-icon>home</mat-icon>
+    <mat-icon>trending_down</mat-icon>
   Paradas na Produção
+  </button>
+  <button mat-menu-item routerLink="/status-producao">
+    <mat-icon>visibility</mat-icon>
+   Status da Produção
   </button>
   <button mat-button *ngIf="estaLogado" (click)="logout()">
     <mat-icon>exit_to_app</mat-icon>

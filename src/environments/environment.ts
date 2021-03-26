@@ -9,6 +9,7 @@ export const environment = {
   wsListarFuncoes:'https://sigo-gateway-brunoferreirag.cloud.okteto.net/api/usuarios/funcoes',
   wsListarParadaProducao: 'https://sigo-gateway-brunoferreirag.cloud.okteto.net/api/erp/parada-producao',
   wsListarLinhaProducao: 'https://sigo-gateway-brunoferreirag.cloud.okteto.net/api/erp/linha-producao',
+  wsListarStatusFaseIndustrial: 'https://sigo-gateway-brunoferreirag.cloud.okteto.net/api/erp/status-producao',
   wsListarTurno: 'https://sigo-gateway-brunoferreirag.cloud.okteto.net/api/erp/turno',
   wsBuscarNormasIndustriais:'https://sigo-gateway-brunoferreirag.cloud.okteto.net/api/gestao-norma-industrial/norma-industrial/busca',
   wsNormasIndustriaisBusca:'https://sigo-gateway-brunoferreirag.cloud.okteto.net/api/gestao-norma-industrial/norma-industrial/busca',

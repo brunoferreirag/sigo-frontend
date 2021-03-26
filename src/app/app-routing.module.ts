@@ -10,6 +10,7 @@ import { NotFoundComponent } from './shared/notfound/notfound.component';
 import { AuthGuardService } from './shared/service/auth-guard.service';
 import { UsuarioFormularioComponent } from './usuario/formulario/usuario-formulario.component';
 import { UsuarioListagemComponent } from './usuario/listagem/usuario-listagem.component';
+import { StatusFaseIndustrialListagemComponent } from './status-fase-industrial/listagem/status-fase-industrial-listagem.component';
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
@@ -59,6 +60,11 @@ const routes: Routes = [
   {
     path: 'norma-industrial', component: NormaIndustrialFormularioComponent, canActivate: [AuthGuardService], data: {
       expectedRole: 'ROLE_SIGO_GN'
+    }
+  },
+  {
+    path: 'status-producao', component: StatusFaseIndustrialListagemComponent, canActivate: [AuthGuardService], data: {
+      expectedRole: 'ROLE_SIGO_GPI_SP'
     }
   },
 
